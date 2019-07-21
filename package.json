@@ -1,9 +1,16 @@
 {
   "name": "nuxt-app-demo",
   "scripts": {
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "start": "nodemon -e js,jsx --exec babel-node server/index.js"
   },
   "dependencies": {
     "nuxt": "^2.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "nodemon": "^1.19.1"
   }
 }
