@@ -1,1 +1,3 @@
-console.log('Hello ever running Node.js project.');
+import 'dotenv/config';
+
+console.log(process.env.TEST_VARIABLE);

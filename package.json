@@ -5,6 +5,7 @@
     "start": "nodemon -e js,jsx --exec babel-node server/index.js"
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "nuxt": "^2.8.1"
   },
   "devDependencies": {
