@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <NLink to='/about'>
+      About Page
+    </NLink>
     <TestComponent 
       id="passed-id"
       myClass="passed-class"
