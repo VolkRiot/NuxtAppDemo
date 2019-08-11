@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <NLink to='/about'>
+    <NLink to="/about">
       About Page
     </NLink>
-    <TestComponent 
+    <test-component 
       id="passed-id"
-      myClass="passed-class"
+      my-class="passed-class"
       msg="TESING ONE TIME BIND" 
-      rawHtml="<h1>This h1 is intrepreted HTML</h1>" 
+      raw-html="<h1>This h1 is intrepreted HTML</h1>" 
       count="0"
-      />
+    />
   </div>
 </template>
 
@@ -18,7 +18,7 @@
 import TestComponent from '../components/TestComponent'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     TestComponent
   },

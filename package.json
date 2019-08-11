@@ -2,17 +2,21 @@
   "name": "nuxt-app-demo",
   "scripts": {
     "dev": "nuxt",
-    "start": "nodemon -e js,jsx --exec babel-node server/index.js"
+    "start": "nodemon -e js,jsx --exec babel-node src/server/index.js",
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
     "dotenv": "^8.0.0",
     "koa": "^2.7.0",
-    "nuxt": "^2.8.1"
+    "nuxt": "^2.8.1",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "eslint": "^6.1.0",
+    "eslint-plugin-vue": "^5.2.3",
     "nodemon": "^1.19.1"
   }
 }

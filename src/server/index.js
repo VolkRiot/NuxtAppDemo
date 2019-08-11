@@ -6,15 +6,26 @@ import { Nuxt, Builder } from 'nuxt';
 
 const app = new Koa();
 const port = process.env.PORT || 3000;
-const host = process.env.HOST || 'localhost'
+const host = process.env.HOST || 'localhost';
 
-const nuxt = new Nuxt();
+const config = require('../../nuxt.config.js')
+config.dev = !(process.env.NODE_ENV === 'production')
+
+async function start() {
+
+const nuxt = new Nuxt(config);
+
+  // Build only in dev mode
+  if (config.dev) {
+    const builder = new Builder(nuxt)
+    await builder.build()
+  }
 
 const builder = new Builder(nuxt);
 builder.build().catch(err => {
   console.error(err);
   process.exit(1);
-})
+});
 
 app.use(async ctx => {
   ctx.status = 200;
@@ -25,10 +36,14 @@ app.use(async ctx => {
 
     nuxt.render(ctx.req, ctx.res, promise => {
       promise.then(resolve).catch(reject);
-    })
-  })
-})
+    });
+  });
+});
 
 app.listen(port, host, () => {
-  console.log(`Listening on port ${port} of ${host}`)
+  console.log(`Listening on port ${port} of ${host}`);
 });
+
+}
+
+start();
