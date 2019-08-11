@@ -34,9 +34,14 @@
       <p>{{ answer }}</p>
     </div>
     <ul>
-    <li v-bind:key="name" v-for="(name, index) of arrayDemo">
+    <li :key="name" v-for="(name, index) of arrayDemo">
       {{ `${name} at index ${index}` }}
     </li>
+    </ul>
+    <ul id="v-for-object" class="demo">
+      <li :key="value" v-for="(value, name) in testObjectPerson">
+        {{name}}: {{ value }}
+      </li>
     </ul>
   </div>
 </template>
@@ -71,6 +76,11 @@ export default {
         backgroundColor: 'green',
         fontSize: '24px',
         width: '100px',
+      },
+      testObjectPerson: {
+        name: 'Misha',
+        age: 34,
+        specialSkills: 'JavaScript'
       }
     };
   },
