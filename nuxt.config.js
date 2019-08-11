@@ -1,3 +1,3 @@
-export default {
-  srcDir: './src/client/'
+module.exports = {
+  srcDir: 'src/client/'
 }

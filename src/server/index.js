@@ -12,8 +12,8 @@ const config = require('../../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 
 async function start() {
-
-const nuxt = new Nuxt(config);
+  // config.srcDir = 'src/client/';
+  const nuxt = new Nuxt(config);
 
   // Build only in dev mode
   if (config.dev) {
@@ -21,28 +21,28 @@ const nuxt = new Nuxt(config);
     await builder.build()
   }
 
-const builder = new Builder(nuxt);
-builder.build().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+  const builder = new Builder(nuxt);
+  builder.build().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
-app.use(async ctx => {
-  ctx.status = 200;
+  app.use(async ctx => {
+    ctx.status = 200;
 
-  return new Promise((resolve, reject) => {
-    ctx.res.on('close', resolve);
-    ctx.res.on('finish', resolve);
+    return new Promise((resolve, reject) => {
+      ctx.res.on('close', resolve);
+      ctx.res.on('finish', resolve);
 
-    nuxt.render(ctx.req, ctx.res, promise => {
-      promise.then(resolve).catch(reject);
+      nuxt.render(ctx.req, ctx.res, promise => {
+        promise.then(resolve).catch(reject);
+      });
     });
   });
-});
 
-app.listen(port, host, () => {
-  console.log(`Listening on port ${port} of ${host}`);
-});
+  app.listen(port, host, () => {
+    console.log(`Listening on port ${port} of ${host}`);
+  });
 
 }
 
